@@ -1,0 +1,85 @@
+
+<div class="container">
+  <h2>Welcome Admin</h2>
+  <ul class="nav nav-tabs">
+    <li class="active"><a data-toggle="tab" href="#projects">Projects</a></li>
+    <li><a data-toggle="tab" href="#my_teams">My Teams</a></li>
+  </ul>
+
+  <div class="tab-content">
+    <div id="projects" class="tab-pane fade in active">  
+	  	<h2>Projects</h2>
+	  	<p><?php $this->flashSession->output() ?></p>	
+		<button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#modalCreateAccount">Create Project</button>           
+		
+		<table class="table table-hover">
+		    <thead>
+		      <tr>
+		        <th>Project Name</th>
+		        <th>Description</th>
+		        <th>Team</th>
+		        <th>Status</th>
+		        <th>Action</th>
+		      </tr>
+		    </thead>
+		    <tbody>
+		      <tr>
+		        <td>Sample</td>
+		        <td>Sample</td>
+		        <td>Sample</td>
+		        <td>Sample</td>
+		        <td><button type="button" class="btn btn-info btn-sm">Edit</button></td>		   
+		      </tr>
+		    </tbody>
+		</table>
+    </div>
+    
+    <div id="my_teams" class="tab-pane fade">
+      	<h2>My Teams</h2>
+  		<button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#modalCreateTeam">Create New Team</button>     
+		<button type="button" class="btn btn-info btn-sm">Edit Team</button>     
+		<button type="button" class="btn btn-danger btn-sm">Delete Team</button>      
+  		<table class="table table-hover">
+		    <thead>
+		      <tr>
+		        <th>Team Name</th>
+		        <th>Description</th>
+		        <th>Members</th>
+		        <th>Status</th>
+		        <th>Action</th>
+		      </tr>
+		    </thead>
+		    <tbody>
+		      <tr>
+		        <td>John</td>
+		        <td>Doe</td>
+		        <td>
+		        Gene Zablan - Front End <br>
+		        Brett Virador - Back End <br>
+		        Michael Yambao - Front End <br>
+		        
+
+		        </td>
+		        <td>john@example.com</td>
+		        <td><button type="button" class="btn btn-info btn-sm">Edit</button></td>
+		      </tr>
+		      <tr>
+		        <td>Mary</td>
+		        <td>Moe</td>
+		        <td>mary@example.com</td>
+		        <td>john@example.com</td>
+		        <td><button type="button" class="btn btn-info btn-sm">Edit</button></td>
+		      </tr>
+		      <tr>
+		        <td>July</td>
+		        <td>Dooley</td>
+		        <td>july@example.com</td>
+		        <td>john@example.com</td>
+		        <td><button type="button" class="btn btn-info btn-sm">Edit</button></td>
+		      </tr>
+		    </tbody>
+	  	</table>
+    </div>
+  </div>
+</div>
+

@@ -1,0 +1,80 @@
+
+<div class="container">
+  <h2>Welcome Admin</h2>
+  <ul class="nav nav-tabs">
+    <li class="active"><a data-toggle="tab" href="#home">Accounts</a></li>
+    <li><a data-toggle="tab" href="#user_types">User Types</a></li>
+    
+  </ul>
+
+  <div class="tab-content">
+    <div id="home" class="tab-pane fade in active">  
+	  	<h2>Accounts</h2>
+	  	<p><?php $this->flashSession->output() ?></p>	
+		<button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#modalCreateAccount">Create New Account</button>           
+		<button type="button" class="btn btn-info btn-sm">Edit Privelege</button>
+		<table class="table table-hover">
+		    <thead>
+		      <tr>
+		        <th>Username</th>
+		        <th>Usertype</th>
+		        <th>Last Login</th>
+		        <th>Status</th>
+		        <th>Action</th>
+		      </tr>
+		    </thead>
+		    <tbody>
+		    <?php foreach ($user_accounts as $value) { ?>
+	    	<?php $last_login = ($value->last_login)?ControllerBase::_getAgo($value->last_login):'Not yet logging in';?>
+		      <tr>
+		        <td><?=$value->username?></td>
+		        <td><?=ucfirst($value->user_type_name)?></td>
+		        <td><?=$last_login?></td>
+		        <td><?=ucfirst($value->status_name)?></td>
+		        <?php if($value->status == 1){ ?>
+		        <td><button type="button" class="btn btn-warning btn-sm">Deactivate</button></td>
+		     
+		        <?php }else if($value->status == 2){ ?>
+		      	<td><button type="button" class="btn btn-info btn-sm">Activate</button></td>
+		        <?php } ?>
+		      </tr>
+		     <?php }?>
+		    </tbody>
+		</table>
+    </div>
+    
+    <div id="user_types" class="tab-pane fade">
+      	<h2>User Types</h2>
+  		<button type="button" class="btn btn-info btn-sm">Create Account</button>     
+		<button type="button" class="btn btn-info btn-sm">Edit Account</button>     
+		<button type="button" class="btn btn-danger btn-sm">Delete Account</button>      
+  		<table class="table table-hover">
+		    <thead>
+		      <tr>
+		        <th>Firstname</th>
+		        <th>Lastname</th>
+		        <th>Email</th>
+		      </tr>
+		    </thead>
+		    <tbody>
+		      <tr>
+		        <td>John</td>
+		        <td>Doe</td>
+		        <td>john@example.com</td>
+		      </tr>
+		      <tr>
+		        <td>Mary</td>
+		        <td>Moe</td>
+		        <td>mary@example.com</td>
+		      </tr>
+		      <tr>
+		        <td>July</td>
+		        <td>Dooley</td>
+		        <td>july@example.com</td>
+		      </tr>
+		    </tbody>
+	  	</table>
+    </div>
+  </div>
+</div>
+
