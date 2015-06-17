@@ -2,7 +2,7 @@
 
 $env = 'localhost';
 
-$baseUri['localhost'] = 'http://localhost/qamanager/';
+$baseUri['localhost'] = 'http://localhost/taskmanager/qamanager/';
 
 $database['localhost']['adapter'] = 'Mysql';
 $database['localhost']['host'] = 'localhost';

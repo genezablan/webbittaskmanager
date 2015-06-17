@@ -19,14 +19,27 @@ class JsLoader extends Plugin
 		$admin_js = $this->assets->collection('admin_js');
 		$admin_js->addJs('js/admin_modal.js');		
 	}
+	public function ProjectJs()
+	{
+		$project_js = $this->assets->collection('project_js');
+		$project_js->addJs('js/project_modal.js');			
+	}
+	public function outputGlobalFooterJs()
+	{
+		$scripts_footer = $this->assets->collection('global_footer_js');
+
+	}
+
 	public  function outputGlobalJs()
 	{
 		$scripts_header = $this->assets->collection('global_header_js');
 		$scripts_header->addJs('https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js'); 
 		$scripts_header->addJs('http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js');
+		$scripts_header->addJs('js/select2.full.min.js');
 		$scripts_header->addJs('js/validator.js');
 		$scripts_header->addJs('js/model/user_account.js');
 		$scripts_header->addJs('js/model/team.js');
+		$scripts_header->addJs('js/model/projects.js');
 		$scripts_header->addJs('js/prototypes.js');
 		$scripts_header->addJs('js/global_variables.js');
 		$scripts_header->join(true);
@@ -41,6 +54,7 @@ class JsLoader extends Plugin
 		if($controller_name != 'ajax' and $controller_name != 'posts')
 		{
 			$this->outputGlobalJs();
+			$this->outputGlobalFooterJs();
 			switch($controller_name)
 			{
 				case "admin":
@@ -48,6 +62,9 @@ class JsLoader extends Plugin
 				break;
 				case "master":
 					$this->MasterJs();
+				break;
+				case "projects":
+					$this->ProjectJs();
 				break;
 			}
 

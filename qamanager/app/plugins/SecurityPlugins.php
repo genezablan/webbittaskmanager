@@ -33,7 +33,7 @@ class SecurityPlugins extends Plugin
 		//var_dump("Role: ".$roles.' Controller: '.$controller.' Action: '.$action);
 		//var_dump($is_allowed); die;
 		
-		/*if(!$is_allowed)
+		if(!$is_allowed)
 		{
 			$this->flash->error("You don't have access to this module");
             $dispatcher->forward(
@@ -44,7 +44,7 @@ class SecurityPlugins extends Plugin
             );
             return false;
 
-		}*/
+		}
 		
 	}
 
@@ -70,8 +70,9 @@ class SecurityPlugins extends Plugin
 							"index" => array("index"),
 							"post" => array("login"),
 							"master" =>array("home","logout"),
-							"ajax" => array("createTeam"),
-							"team" => array("index","view")
+							"ajax" => array("createTeam","createProject"),
+							"team" => array("index","view"),
+							"projects" => array("index","view")
 						)
 			);
 		

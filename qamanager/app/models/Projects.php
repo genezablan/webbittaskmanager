@@ -1,6 +1,6 @@
 <?php
-use Phalcon\Mvc\Model\Validator\Uniqueness as Uniqueness;
-class Team extends \Phalcon\Mvc\Model
+
+class Projects extends \Phalcon\Mvc\Model
 {
 
     /**
@@ -17,7 +17,7 @@ class Team extends \Phalcon\Mvc\Model
 
     /**
      *
-     * @var integer
+     * @var string
      */
     public $name;
 
@@ -45,26 +45,14 @@ class Team extends \Phalcon\Mvc\Model
      */
     public $date_modified;
 
-    public function validation()
+    /**
+     * Initialize method for model.
+     */
+    public function initialize()
     {
-        $this->validate(new Uniqueness(array(
-          "field" => 'name',
-          "message"=> 'Team has already been registered please try again another'
-        )));
-        if ($this->validationHasFailed() == true) {
-          return false;
-        }
+        $this->setSource('Projects');
     }
     
-    public function beforeValidationOnCreate()
-    {
-        $this->date_created = CURR_DATE;
-        $this->status = 1;
-    }
-    public function beforeValidationOnUpdate()
-    {
-        $this->date_modified = CURR_DATE;
-    }
 
     /**
      * Independent Column Mapping.
@@ -82,15 +70,22 @@ class Team extends \Phalcon\Mvc\Model
         );
     }
 
-    public function listTeams($master_id)
+    public function beforeValidationOnCreate()
     {
-        $phql = "SELECT t.id as team_id,t.name as team_name, t.description,t.status,ts.name as status_name
-                 FROM Team t
-                 INNER JOIN TeamStatus ts ON ts.id = t.status
-                 WHERE t.master_id = ?1
-                 ORDER BY t.date_created,t.date_modified DESC";
+        $this->date_created = CURR_DATE;
+        $this->status = 1;
+    }
+    public function beforeValidationOnUpdate()
+    {
+        $this->date_modified = CURR_DATE;
+    }
+    public function listProjects($master_id)
+    {
+        $phql = "SELECT p.id as project_id,p.name,p.description,p.status,ps.name as status_name
+                 FROM Projects p
+                 INNER JOIN ProjectStatus ps ON ps.id = p.status
+                 WHERE p.master_id = ?1";
         $data = $this->modelsManager->executeQuery($phql,array(1=>$master_id));
         return $data;
     }
-
 }

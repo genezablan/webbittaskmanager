@@ -8,14 +8,14 @@
 	  	<?php $this->assets->outputJs('global_header_js') ?>
 	</head>
 	<body>
-		<?php $this->partial('common/master_menu'); ?>
+		
 		<?php $this->partial($page_content); ?>
-		<?php $this->partial('common/master_modals'); ?>
+	 	<?php $this->partial('common/projects_modals'); ?>
 	 	<script type="text/javascript">
 	 	var URL = "<?php echo BASE_URI; ?>";
 		var CURR_DATE = "<?php echo CURR_DATE ?>";
 		</script>
-	 	<?php $this->assets->outputJs('master_js') ?>
+	 	<?php $this->assets->outputJs('project_js') ?>
 	 	<?php $this->assets->outputJs('global_footer_js') ?>
 	</body>
 </html>

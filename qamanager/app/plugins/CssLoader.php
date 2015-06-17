@@ -18,6 +18,7 @@ class CssLoader extends Plugin
 	{
 		$scripts_header = $this->assets->collection('global_header_css');
 		$scripts_header->addCss('http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css');
+		$scripts_header->addCss('css/select2.min.css');
 		$scripts_header->addCss('css/main.css');
 	}
 	public function beforeDispatch(Event $event , Dispatcher $dispatcher)

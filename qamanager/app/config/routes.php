@@ -12,5 +12,12 @@ $di->set('router', function(){
 		'action'		=> 'view',
 		'params'		=> 1
 	));
+
+	$router->add('/projects/:params', array(
+		'controller'	=> 'projects',
+		'action'		=> 'view',
+		'params'		=> 1
+	));
+	
 	return $router;
 });

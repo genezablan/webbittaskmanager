@@ -10,7 +10,7 @@
     <div id="projects" class="tab-pane fade in active">  
 	  	<h2>Projects</h2>
 	  	<p><?php $this->flashSession->output() ?></p>	
-		<button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#modalCreateAccount">Create Project</button>           
+		<button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#modalCreateProject">Create Project</button>           
 		
 		<table class="table table-hover">
 		    <thead>
@@ -23,13 +23,20 @@
 		      </tr>
 		    </thead>
 		    <tbody>
+		    <?php foreach ($projects as $project) { ?>
 		      <tr>
-		        <td>Sample</td>
-		        <td>Sample</td>
-		        <td>Sample</td>
-		        <td>Sample</td>
+		        <td><a href="<?=BASE_URI.'projects/'.$project->name.'/'.md5($project->project_id)?>"><?=ucfirst($project->name)?></a></td>
+		        <td><?=ucfirst($project->description)?></td>
+		        <td>
+		        	<?php $project_teams = ProjectTeam::listTeams($project->project_id); ?>
+			       	<?php foreach ($project_teams as $team) { ?>
+			       	<a href="#"><?=$team->name?></a><br>
+			       	<?php } ?>
+		        </td>
+		        <td><?=ucfirst($project->status_name)?></td>
 		        <td><button type="button" class="btn btn-info btn-sm">Edit</button></td>		   
 		      </tr>
+		    <?php } ?>
 		    </tbody>
 		</table>
     </div>
@@ -50,33 +57,21 @@
 		      </tr>
 		    </thead>
 		    <tbody>
+		    <?php foreach ($teams as $team) { ?>
 		      <tr>
-		        <td>John</td>
-		        <td>Doe</td>
-		        <td>
-		        Gene Zablan - Front End <br>
-		        Brett Virador - Back End <br>
-		        Michael Yambao - Front End <br>
+		        <td><?=$team->team_name?></td>
+		        <td><?=$team->description?></td>
 		        
-
+		        <td>
+			       	<?php $members = TeamMembers::listMembers($team->team_id); ?>
+			       	<?php foreach ($members as $member) { ?>
+			       	<a href="#"><?=$member->username?></a><br>
+			       	<?php } ?>
 		        </td>
-		        <td>john@example.com</td>
+		        <td><?=ucfirst($team->status_name)?></td>
 		        <td><button type="button" class="btn btn-info btn-sm">Edit</button></td>
 		      </tr>
-		      <tr>
-		        <td>Mary</td>
-		        <td>Moe</td>
-		        <td>mary@example.com</td>
-		        <td>john@example.com</td>
-		        <td><button type="button" class="btn btn-info btn-sm">Edit</button></td>
-		      </tr>
-		      <tr>
-		        <td>July</td>
-		        <td>Dooley</td>
-		        <td>july@example.com</td>
-		        <td>john@example.com</td>
-		        <td><button type="button" class="btn btn-info btn-sm">Edit</button></td>
-		      </tr>
+		     <?php } ?>
 		    </tbody>
 	  	</table>
     </div>
