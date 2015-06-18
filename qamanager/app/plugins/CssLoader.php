@@ -17,7 +17,7 @@ class CssLoader extends Plugin
 	public  function outputGlobalCss()
 	{
 		$scripts_header = $this->assets->collection('global_header_css');
-		$scripts_header->addCss('http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css');
+		$scripts_header->addCss('http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css',false);
 		$scripts_header->addCss('css/select2.min.css');
 		$scripts_header->addCss('css/main.css');
 	}

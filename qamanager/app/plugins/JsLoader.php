@@ -33,8 +33,8 @@ class JsLoader extends Plugin
 	public  function outputGlobalJs()
 	{
 		$scripts_header = $this->assets->collection('global_header_js');
-		$scripts_header->addJs('https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js'); 
-		$scripts_header->addJs('http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js');
+		$scripts_header->addJs('https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js',false); 
+		$scripts_header->addJs('http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js',false);
 		$scripts_header->addJs('js/select2.full.min.js');
 		$scripts_header->addJs('js/validator.js');
 		$scripts_header->addJs('js/model/user_account.js');
